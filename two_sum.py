@@ -9,10 +9,29 @@ def two_sum(arr, target):
     return [-1, -1] # Not found
 
 def three_sum(arr, target):
-    left = 0
-    right = 0
     arr.sort()
-    # Not sure what to do just yet...
+    ans = []
+    for i in range(len(arr) - 2):
+        if i > 0 and arr[i] == arr[i-1]:
+            continue
+        left = i + 1
+        right = len(arr) - 1
+        curr_target = target - arr[i]
+        while left < right:
+            if arr[left] == arr[left + 1]:
+                left += 1
+            elif arr[right] == arr[right - 1]:
+                right -= 1
+            curr_sum = arr[left] + arr[right]
+
+            if curr_sum < curr_target:
+                left += 1
+            elif curr_sum > curr_target:
+                right -= 1
+            else:
+                ans += [arr[i], arr[left], arr[right]]
+                left += 1
+    return ans
 
 def main():
     print(two_sum([3,5,9,0,-1,-5], 4)) # Returns [1, 4]
