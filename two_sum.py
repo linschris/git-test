@@ -7,3 +7,10 @@ def two_sum(arr, target):
             return [complement_index, index]
         sum_dict[num] = index
     return [-1, -1] # Not found
+
+def main():
+    print(two_sum([3,5,9,0,-1,-5], 4)) # Returns [1, 4]
+    print(two_sum([], 0)) # Returns [-1,-1]
+
+if __name__ == "__main__":
+    main()
